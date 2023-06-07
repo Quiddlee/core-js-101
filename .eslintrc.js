@@ -1,5 +1,6 @@
 module.exports = {
   env: {
+    es2020: true,
     commonjs: true,
     es6: true,
     node: true,
@@ -15,6 +16,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
   },
-  rules: {
-  },
+  rules: {},
 };
