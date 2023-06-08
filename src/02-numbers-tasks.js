@@ -185,14 +185,6 @@ function getParallelepipedDiagonal(a, b, c) {
 function roundToPowerOfTen(num, pow) {
   const res = num.toString()
     .split('');
-  let step = res.length - 1;
-
-  for (let i = 0; i < pow; i += 1) {
-    res[step] = 0;
-    step -= 1;
-  }
-
-  return Math.round(+res.join(''));
 }
 
 /**
