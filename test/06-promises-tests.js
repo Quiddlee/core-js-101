@@ -31,23 +31,26 @@ describe('07-promises-tasks', () => {
         'Hooray!!! She said "Yes"!',
         'if parameter is "true" Promise should be resolved with value === \'Hooray!!! She said "Yes"!\'',
       );
-    }).catch((error) => {
-      const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-      messages.push(errorMessage.message);
-
-      // answer 2
-    }).then(() => answer2).then((value) => {
-      assert.equal(
-        value,
-        'Oh no, she said "No".',
-        'if parameter is "false" Promise should be resolved with value === \'Oh no, she said "No".\'',
-      );
     })
       .catch((error) => {
         const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
         messages.push(errorMessage.message);
+
+      // answer 2
       })
-      // answers
+      .then(() => answer2)
+      .then((value) => {
+        assert.equal(
+          value,
+          'Oh no, she said "No".',
+          'if parameter is "false" Promise should be resolved with value === \'Oh no, she said "No".\'',
+        );
+      })
+      .catch((error) => {
+        const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
+        messages.push(errorMessage.message);
+      })
+    // answers
       .then(() => Promise.all(answers))
       .then(() => {
         assert(
@@ -78,7 +81,8 @@ describe('07-promises-tasks', () => {
   }, true);
 
   it.optional('function processAllPromises should return correct Promise that will be resolved with array of values', (done) => {
-    const arrayForPromise = new Array(1000).fill(0).map((_, idx) => idx);
+    const arrayForPromise = new Array(1000).fill(0)
+      .map((_, idx) => idx);
     const result1 = tasks.processAllPromises(arrayForPromise.map((item) => Promise.resolve(item)));
     const result2 = tasks.processAllPromises(arrayForPromise.map((item) => (item % 2
       ? Promise.resolve(item)
@@ -101,19 +105,22 @@ describe('07-promises-tasks', () => {
           'array\'s items shouldn\'t be Promises objects!',
         );
       });
-    }).catch((error) => {
-      const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-      messages.push(errorMessage.message);
-    // result 2
-    }).then(() => result2).catch((error) => {
-      const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-
-      assert.equal(
-        errorMessage.message,
-        'Predictable Rejection 0',
-        'should reject with Error was given from the first rejected Promise in array!',
-      );
     })
+      .catch((error) => {
+        const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
+        messages.push(errorMessage.message);
+      // result 2
+      })
+      .then(() => result2)
+      .catch((error) => {
+        const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
+
+        assert.equal(
+          errorMessage.message,
+          'Predictable Rejection 0',
+          'should reject with Error was given from the first rejected Promise in array!',
+        );
+      })
       .catch((error) => {
         const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
         messages.push(errorMessage.message);
@@ -155,16 +162,19 @@ describe('07-promises-tasks', () => {
         'I\'m first!',
         'getFastestPromise should return Promise that was resolved first!',
       );
-    }).catch((error) => {
-      const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-      messages.push(errorMessage.message);
-      // result 2
-    }).then(() => result2).then(() => {
-      assert(
-        false,
-        'should reject with Error was given from the first rejected Promise in array!',
-      );
     })
+      .catch((error) => {
+        const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
+        messages.push(errorMessage.message);
+      // result 2
+      })
+      .then(() => result2)
+      .then(() => {
+        assert(
+          false,
+          'should reject with Error was given from the first rejected Promise in array!',
+        );
+      })
       .catch((error) => {
         const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
         assert.equal(
@@ -188,9 +198,11 @@ describe('07-promises-tasks', () => {
 
   it.optional('function chainPromises should resolve Promises one by one', (done) => {
     const lorem = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
-    const arrayForPromise = new Array(1000).fill(0).map((_, idx) => idx);
+    const arrayForPromise = new Array(1000).fill(0)
+      .map((_, idx) => idx);
 
-    const promises = lorem.split(' ').map((item) => new Promise((resolve) => resolve(item)));
+    const promises = lorem.split(' ')
+      .map((item) => new Promise((resolve) => resolve(item)));
 
     const result1 = tasks.chainPromises(promises, (a, b) => `${a} ${b}`);
     let result2;
@@ -237,18 +249,21 @@ describe('07-promises-tasks', () => {
         lorem,
         'result value should be equal value that could be calculated by reducing array with method action!',
       );
-    }).catch((error) => {
-      const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-      messages.push(errorMessage.message);
-      // result 2
-    }).then(() => result2).catch((error) => {
-      const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
-
-      assert(
-        errorMessage.message.match('Predictable Rejection'),
-        'should not reject with Errors!',
-      );
     })
+      .catch((error) => {
+        const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
+        messages.push(errorMessage.message);
+      // result 2
+      })
+      .then(() => result2)
+      .catch((error) => {
+        const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
+
+        assert(
+          errorMessage.message.match('Predictable Rejection'),
+          'should not reject with Errors!',
+        );
+      })
       .catch((error) => {
         const errorMessage = error instanceof Error ? error : defaultRejectionMessage;
         messages.push(errorMessage.message);

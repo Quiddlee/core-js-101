@@ -57,9 +57,18 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('getFactorial should return the functorial of given number', () => {
     [
-      { n: 1, expected: 1 },
-      { n: 5, expected: 120 },
-      { n: 10, expected: 3628800 },
+      {
+        n: 1,
+        expected: 1,
+      },
+      {
+        n: 5,
+        expected: 120,
+      },
+      {
+        n: 10,
+        expected: 3628800,
+      },
     ].forEach((data) => {
       const actual = tasks.getFactorial(data.n);
       assert.equal(
@@ -73,9 +82,21 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('getSumBetweenNumbers should return the sum inside the specified interval', () => {
     [
-      { n1: 1, n2: 2, expected: 3 },
-      { n1: 5, n2: 10, expected: 45 },
-      { n1: -1, n2: 1, expected: 0 },
+      {
+        n1: 1,
+        n2: 2,
+        expected: 3,
+      },
+      {
+        n1: 5,
+        n2: 10,
+        expected: 45,
+      },
+      {
+        n1: -1,
+        n2: 1,
+        expected: 0,
+      },
     ].forEach((data) => {
       const actual = tasks.getSumBetweenNumbers(data.n1, data.n2);
       assert.equal(
@@ -89,10 +110,22 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('isTriangle should check if triangle can be built', () => {
     [
-      { sides: [1, 2, 3], expected: false },
-      { sides: [3, 4, 5], expected: true },
-      { sides: [10, 1, 1], expected: false },
-      { sides: [10, 10, 10], expected: true },
+      {
+        sides: [1, 2, 3],
+        expected: false,
+      },
+      {
+        sides: [3, 4, 5],
+        expected: true,
+      },
+      {
+        sides: [10, 1, 1],
+        expected: false,
+      },
+      {
+        sides: [10, 10, 10],
+        expected: true,
+      },
     ].forEach((data) => {
       [[0, 1, 2], [0, 2, 1], [1, 2, 0], [1, 0, 2], [2, 0, 1], [2, 1, 0]].forEach((idx) => {
         const actual = tasks.isTriangle(
@@ -114,58 +147,100 @@ describe('08-conditions-n-loops-tasks', () => {
     [
       {
         rect1: {
-          top: 0, left: 0, width: 10, height: 10,
+          top: 0,
+          left: 0,
+          width: 10,
+          height: 10,
         },
         rect2: {
-          top: 5, left: 5, width: 10, height: 10,
+          top: 5,
+          left: 5,
+          width: 10,
+          height: 10,
         },
         expected: true,
       }, {
         rect1: {
-          top: 10, left: 10, width: 10, height: 10,
+          top: 10,
+          left: 10,
+          width: 10,
+          height: 10,
         },
         rect2: {
-          top: 5, left: 5, width: 15, height: 15,
+          top: 5,
+          left: 5,
+          width: 15,
+          height: 15,
         },
         expected: true,
       }, {
         rect1: {
-          top: 10, left: 10, width: 50, height: 5,
+          top: 10,
+          left: 10,
+          width: 50,
+          height: 5,
         },
         rect2: {
-          top: 5, left: 5, width: 10, height: 50,
+          top: 5,
+          left: 5,
+          width: 10,
+          height: 50,
         },
         expected: true,
       }, {
         rect1: {
-          top: 0, left: 0, width: 90, height: 90,
+          top: 0,
+          left: 0,
+          width: 90,
+          height: 90,
         },
         rect2: {
-          top: 25, left: 25, width: 10, height: 10,
+          top: 25,
+          left: 25,
+          width: 10,
+          height: 10,
         },
         expected: true,
       }, {
         rect1: {
-          top: 5, left: 5, width: 20, height: 20,
+          top: 5,
+          left: 5,
+          width: 20,
+          height: 20,
         },
         rect2: {
-          top: 5, left: 5, width: 40, height: 10,
+          top: 5,
+          left: 5,
+          width: 40,
+          height: 10,
         },
         expected: true,
       }, {
         rect1: {
-          top: 5, left: 5, width: 20, height: 20,
+          top: 5,
+          left: 5,
+          width: 20,
+          height: 20,
         },
         rect2: {
-          top: 30, left: 5, width: 40, height: 10,
+          top: 30,
+          left: 5,
+          width: 40,
+          height: 10,
         },
         expected: false,
       }, {
         rect1: {
-          top: 0, left: 0, width: 90, height: 90,
+          top: 0,
+          left: 0,
+          width: 90,
+          height: 90,
         },
         rect2: {
-          top: 25, left: 100, width: 10, height: 10,
+          top: 25,
+          left: 100,
+          width: 10,
+          height: 10,
         },
         expected: false,
       },
@@ -182,32 +257,95 @@ describe('08-conditions-n-loops-tasks', () => {
   it.optional('isInsideCircle should return true if point lies inside of the specified circle', () => {
     [
       {
-        circle: { center: { x: 0, y: 0 }, radius: 10 },
-        point: { x: 0, y: 0 },
+        circle: {
+          center: {
+            x: 0,
+            y: 0,
+          },
+          radius: 10,
+        },
+        point: {
+          x: 0,
+          y: 0,
+        },
         expected: true,
       }, {
-        circle: { center: { x: 5, y: 5 }, radius: 6 },
-        point: { x: 5, y: 10.99 },
+        circle: {
+          center: {
+            x: 5,
+            y: 5,
+          },
+          radius: 6,
+        },
+        point: {
+          x: 5,
+          y: 10.99,
+        },
         expected: true,
       }, {
-        circle: { center: { x: 0, y: 0 }, radius: 10 },
-        point: { x: 0, y: 10 },
+        circle: {
+          center: {
+            x: 0,
+            y: 0,
+          },
+          radius: 10,
+        },
+        point: {
+          x: 0,
+          y: 10,
+        },
         expected: false,
       }, {
-        circle: { center: { x: 5, y: 5 }, radius: 6 },
-        point: { x: 0, y: 0 },
+        circle: {
+          center: {
+            x: 5,
+            y: 5,
+          },
+          radius: 6,
+        },
+        point: {
+          x: 0,
+          y: 0,
+        },
         expected: false,
       }, {
-        circle: { center: { x: 2, y: 2 }, radius: 1 },
-        point: { x: 2.8, y: 2.8 },
+        circle: {
+          center: {
+            x: 2,
+            y: 2,
+          },
+          radius: 1,
+        },
+        point: {
+          x: 2.8,
+          y: 2.8,
+        },
         expected: false,
       }, {
-        circle: { center: { x: 2, y: 2 }, radius: 4 },
-        point: { x: -1, y: -1 },
+        circle: {
+          center: {
+            x: 2,
+            y: 2,
+          },
+          radius: 4,
+        },
+        point: {
+          x: -1,
+          y: -1,
+        },
         expected: false,
       }, {
-        circle: { center: { x: 2, y: 2 }, radius: 4 },
-        point: { x: 2, y: 6.1 },
+        circle: {
+          center: {
+            x: 2,
+            y: 2,
+          },
+          radius: 4,
+        },
+        point: {
+          x: 2,
+          y: 6.1,
+        },
         expected: false,
       },
     ].forEach((data) => {
@@ -222,9 +360,18 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('findFirstSingleChar should return the first unrepeated char from string', () => {
     [
-      { str: 'The quick brown fox jumps over the lazy dog', expected: 'T' },
-      { str: 'abracadabra', expected: 'c' },
-      { str: 'entente', expected: null },
+      {
+        str: 'The quick brown fox jumps over the lazy dog',
+        expected: 'T',
+      },
+      {
+        str: 'abracadabra',
+        expected: 'c',
+      },
+      {
+        str: 'entente',
+        expected: null,
+      },
     ].forEach((data) => {
       const actual = tasks.findFirstSingleChar(data.str);
       assert.equal(
@@ -283,10 +430,22 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('reverseString should return the specified string in reverse order', () => {
     [
-      { str: 'The quick brown fox jumps over the lazy dog', expected: 'god yzal eht revo spmuj xof nworb kciuq ehT' },
-      { str: 'abracadabra', expected: 'arbadacarba' },
-      { str: 'rotator', expected: 'rotator' },
-      { str: 'noon', expected: 'noon' },
+      {
+        str: 'The quick brown fox jumps over the lazy dog',
+        expected: 'god yzal eht revo spmuj xof nworb kciuq ehT',
+      },
+      {
+        str: 'abracadabra',
+        expected: 'arbadacarba',
+      },
+      {
+        str: 'rotator',
+        expected: 'rotator',
+      },
+      {
+        str: 'noon',
+        expected: 'noon',
+      },
     ].forEach((data) => {
       const actual = tasks.reverseString(data.str);
       assert.equal(
@@ -300,10 +459,22 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('reverseInteger should return the specified number in reverse order', () => {
     [
-      { num: 12345, expected: 54321 },
-      { num: 1111, expected: 1111 },
-      { num: 87354, expected: 45378 },
-      { num: 34143, expected: 34143 },
+      {
+        num: 12345,
+        expected: 54321,
+      },
+      {
+        num: 1111,
+        expected: 1111,
+      },
+      {
+        num: 87354,
+        expected: 45378,
+      },
+      {
+        num: 34143,
+        expected: 34143,
+      },
     ].forEach((data) => {
       const actual = tasks.reverseInteger(data.num);
       assert.equal(
@@ -363,10 +534,22 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('getDigitalRoot should return the cyclic sum of all digits', () => {
     [
-      { num: 12345, expected: 6 },
-      { num: 23456, expected: 2 },
-      { num: 10000, expected: 1 },
-      { num: 165536, expected: 8 },
+      {
+        num: 12345,
+        expected: 6,
+      },
+      {
+        num: 23456,
+        expected: 2,
+      },
+      {
+        num: 10000,
+        expected: 1,
+      },
+      {
+        num: 165536,
+        expected: 8,
+      },
     ].forEach((data) => {
       const actual = tasks.getDigitalRoot(data.num);
       assert.equal(
@@ -404,16 +587,56 @@ describe('08-conditions-n-loops-tasks', () => {
 
   it.optional('toNaryString should return the n-ary string representation of number', () => {
     [
-      { num: 1024, n: 2, expected: '10000000000' },
-      { num: 6561, n: 3, expected: '100000000' },
-      { num: 365, n: 2, expected: '101101101' },
-      { num: 365, n: 3, expected: '111112' },
-      { num: 365, n: 4, expected: '11231' },
-      { num: 365, n: 5, expected: '2430' },
-      { num: 365, n: 6, expected: '1405' },
-      { num: 365, n: 7, expected: '1031' },
-      { num: 365, n: 9, expected: '445' },
-      { num: 365, n: 10, expected: '365' },
+      {
+        num: 1024,
+        n: 2,
+        expected: '10000000000',
+      },
+      {
+        num: 6561,
+        n: 3,
+        expected: '100000000',
+      },
+      {
+        num: 365,
+        n: 2,
+        expected: '101101101',
+      },
+      {
+        num: 365,
+        n: 3,
+        expected: '111112',
+      },
+      {
+        num: 365,
+        n: 4,
+        expected: '11231',
+      },
+      {
+        num: 365,
+        n: 5,
+        expected: '2430',
+      },
+      {
+        num: 365,
+        n: 6,
+        expected: '1405',
+      },
+      {
+        num: 365,
+        n: 7,
+        expected: '1031',
+      },
+      {
+        num: 365,
+        n: 9,
+        expected: '445',
+      },
+      {
+        num: 365,
+        n: 10,
+        expected: '365',
+      },
     ].forEach((data) => {
       const actual = tasks.toNaryString(data.num, data.n);
       assert.equal(
