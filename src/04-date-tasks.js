@@ -75,30 +75,31 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(startDate, endDate) {
-  const gap = (endDate.getTime() - startDate.getTime());
-
-  // const hrs = Math.floor((gap %= 86400) / 3600)
+function timeSpanToString(/* startDate, endDate */) {
+  // const gap = (endDate.getTime() - startDate.getTime());
+  //
+  // // const hrs = Math.floor((gap %= 86400) / 3600)
+  // //   .toString();
+  // // const min = Math.floor((gap %= 3600) / 60)
+  // //   .toString();
+  // // const sec = Math.floor(gap %= 60)
+  // //   .toString();
+  // // const milSec = (gap % 1000).toString();
+  //
+  // const date = new Date(gap);
+  // const hrs = date.getHours()
   //   .toString();
-  // const min = Math.floor((gap %= 3600) / 60)
+  // const min = date.getMinutes()
   //   .toString();
-  // const sec = Math.floor(gap %= 60)
+  // const sec = date.getSeconds()
   //   .toString();
-  // const milSec = (gap % 1000).toString();
-
-  const date = new Date(gap);
-  const hrs = date.getHours()
-    .toString();
-  const min = date.getMinutes()
-    .toString();
-  const sec = date.getSeconds()
-    .toString();
-  const milSec = date.getMilliseconds()
-    .toString();
-
-  console.log(date);
-
-  return `${hrs.padStart(2, 0)}:${min.padStart(2, 0)}:${sec.padStart(2, 0)}.${milSec.padStart(3, 0)}`;
+  // const milSec = date.getMilliseconds()
+  //   .toString();
+  //
+  // // console.log(date);
+  //
+  // return `${hrs.padStart(2, 0)}:
+  // ${min.padStart(2, 0)}:${sec.padStart(2, 0)}.${milSec.padStart(3, 0)}`;
 }
 
 
