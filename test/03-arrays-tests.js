@@ -561,66 +561,210 @@ describe('03-arrays-tasks', () => {
     [
       {
         arr: [
-          { country: 'Russia', city: 'Moscow' },
-          { country: 'Belarus', city: 'Minsk' },
-          { country: 'Poland', city: 'Warsaw' },
-          { country: 'Russia', city: 'Saint Petersburg' },
-          { country: 'Poland', city: 'Krakow' },
-          { country: 'Belarus', city: 'Brest' },
+          {
+            country: 'Russia',
+            city: 'Moscow',
+          },
+          {
+            country: 'Belarus',
+            city: 'Minsk',
+          },
+          {
+            country: 'Poland',
+            city: 'Warsaw',
+          },
+          {
+            country: 'Russia',
+            city: 'Saint Petersburg',
+          },
+          {
+            country: 'Poland',
+            city: 'Krakow',
+          },
+          {
+            country: 'Belarus',
+            city: 'Brest',
+          },
         ],
         expected: [
-          { country: 'Belarus', city: 'Brest' },
-          { country: 'Belarus', city: 'Minsk' },
-          { country: 'Poland', city: 'Krakow' },
-          { country: 'Poland', city: 'Warsaw' },
-          { country: 'Russia', city: 'Moscow' },
-          { country: 'Russia', city: 'Saint Petersburg' },
+          {
+            country: 'Belarus',
+            city: 'Brest',
+          },
+          {
+            country: 'Belarus',
+            city: 'Minsk',
+          },
+          {
+            country: 'Poland',
+            city: 'Krakow',
+          },
+          {
+            country: 'Poland',
+            city: 'Warsaw',
+          },
+          {
+            country: 'Russia',
+            city: 'Moscow',
+          },
+          {
+            country: 'Russia',
+            city: 'Saint Petersburg',
+          },
         ],
       }, {
         arr: [
-          { country: 'D', city: '1' },
-          { country: 'E', city: '1' },
-          { country: 'A', city: '2' },
-          { country: 'B', city: '1' },
-          { country: 'B', city: '2' },
-          { country: 'A', city: '1' },
+          {
+            country: 'D',
+            city: '1',
+          },
+          {
+            country: 'E',
+            city: '1',
+          },
+          {
+            country: 'A',
+            city: '2',
+          },
+          {
+            country: 'B',
+            city: '1',
+          },
+          {
+            country: 'B',
+            city: '2',
+          },
+          {
+            country: 'A',
+            city: '1',
+          },
         ],
         expected: [
-          { country: 'A', city: '1' },
-          { country: 'A', city: '2' },
-          { country: 'B', city: '1' },
-          { country: 'B', city: '2' },
-          { country: 'D', city: '1' },
-          { country: 'E', city: '1' },
+          {
+            country: 'A',
+            city: '1',
+          },
+          {
+            country: 'A',
+            city: '2',
+          },
+          {
+            country: 'B',
+            city: '1',
+          },
+          {
+            country: 'B',
+            city: '2',
+          },
+          {
+            country: 'D',
+            city: '1',
+          },
+          {
+            country: 'E',
+            city: '1',
+          },
         ],
       }, {
         arr: [
-          { country: '5', city: '1' },
-          { country: '1', city: '1' },
-          { country: '1', city: '2' },
-          { country: '1', city: '3' },
-          { country: '2', city: '2' },
-          { country: '1', city: '1' },
-          { country: '1', city: '1' },
-          { country: '2', city: '1' },
-          { country: '3', city: '1' },
-          { country: '3', city: '3' },
-          { country: '2', city: '5' },
-          { country: '5', city: '2' },
+          {
+            country: '5',
+            city: '1',
+          },
+          {
+            country: '1',
+            city: '1',
+          },
+          {
+            country: '1',
+            city: '2',
+          },
+          {
+            country: '1',
+            city: '3',
+          },
+          {
+            country: '2',
+            city: '2',
+          },
+          {
+            country: '1',
+            city: '1',
+          },
+          {
+            country: '1',
+            city: '1',
+          },
+          {
+            country: '2',
+            city: '1',
+          },
+          {
+            country: '3',
+            city: '1',
+          },
+          {
+            country: '3',
+            city: '3',
+          },
+          {
+            country: '2',
+            city: '5',
+          },
+          {
+            country: '5',
+            city: '2',
+          },
         ],
         expected: [
-          { country: '1', city: '1' },
-          { country: '1', city: '1' },
-          { country: '1', city: '1' },
-          { country: '1', city: '2' },
-          { country: '1', city: '3' },
-          { country: '2', city: '1' },
-          { country: '2', city: '2' },
-          { country: '2', city: '5' },
-          { country: '3', city: '1' },
-          { country: '3', city: '3' },
-          { country: '5', city: '1' },
-          { country: '5', city: '2' },
+          {
+            country: '1',
+            city: '1',
+          },
+          {
+            country: '1',
+            city: '1',
+          },
+          {
+            country: '1',
+            city: '1',
+          },
+          {
+            country: '1',
+            city: '2',
+          },
+          {
+            country: '1',
+            city: '3',
+          },
+          {
+            country: '2',
+            city: '1',
+          },
+          {
+            country: '2',
+            city: '2',
+          },
+          {
+            country: '2',
+            city: '5',
+          },
+          {
+            country: '3',
+            city: '1',
+          },
+          {
+            country: '3',
+            city: '3',
+          },
+          {
+            country: '5',
+            city: '1',
+          },
+          {
+            country: '5',
+            city: '2',
+          },
         ],
       },
     ].forEach((data) => {
@@ -689,8 +833,8 @@ describe('03-arrays-tasks', () => {
       {
         start: -5,
         end: -3,
-        expected: [-5, -4 ,-3],
-      }
+        expected: [-5, -4, -3],
+      },
     ].forEach((data) => {
       const actual = tasks.getIntervalArray(data.start, data.end);
       assert.deepEqual(
@@ -729,12 +873,30 @@ describe('03-arrays-tasks', () => {
     [
       {
         arr: [
-          { country: 'Belarus', city: 'Brest' },
-          { country: 'Russia', city: 'Omsk' },
-          { country: 'Russia', city: 'Samara' },
-          { country: 'Belarus', city: 'Grodno' },
-          { country: 'Belarus', city: 'Minsk' },
-          { country: 'Poland', city: 'Lodz' },
+          {
+            country: 'Belarus',
+            city: 'Brest',
+          },
+          {
+            country: 'Russia',
+            city: 'Omsk',
+          },
+          {
+            country: 'Russia',
+            city: 'Samara',
+          },
+          {
+            country: 'Belarus',
+            city: 'Grodno',
+          },
+          {
+            country: 'Belarus',
+            city: 'Minsk',
+          },
+          {
+            country: 'Poland',
+            city: 'Lodz',
+          },
         ],
         keySelector: (item) => item.country,
         valueSelector: (item) => item.city,
@@ -745,18 +907,36 @@ describe('03-arrays-tasks', () => {
         ]),
       }, {
         arr: [
-          { artist: 'ACDC', album: 'Highway to Hell' },
-          { artist: 'Metallica', album: "Kill'em All" },
-          { artist: 'Deep Purple', album: 'Machine Head' },
-          { artist: 'Metallica', album: 'And Justice for All' },
-          { artist: 'ACDC', album: 'Back in Black' },
-          { artist: 'Manowar', album: 'Kings of Metal' },
+          {
+            artist: 'ACDC',
+            album: 'Highway to Hell',
+          },
+          {
+            artist: 'Metallica',
+            album: 'Kill\'em All',
+          },
+          {
+            artist: 'Deep Purple',
+            album: 'Machine Head',
+          },
+          {
+            artist: 'Metallica',
+            album: 'And Justice for All',
+          },
+          {
+            artist: 'ACDC',
+            album: 'Back in Black',
+          },
+          {
+            artist: 'Manowar',
+            album: 'Kings of Metal',
+          },
         ],
         keySelector: (item) => item.artist,
         valueSelector: (item) => item.album,
         expected: new Map([
           ['ACDC', ['Highway to Hell', 'Back in Black']],
-          ['Metallica', ["Kill'em All", 'And Justice for All']],
+          ['Metallica', ['Kill\'em All', 'And Justice for All']],
           ['Deep Purple', ['Machine Head']],
           ['Manowar', ['Kings of Metal']],
         ]),
