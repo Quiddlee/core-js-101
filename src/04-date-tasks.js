@@ -75,32 +75,18 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,10,0,0,250)     => "00:00:00.250"
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
-function timeSpanToString(/* startDate, endDate */) {
-  throw new Error('Not implemented');
-  // const gap = (endDate.getTime() - startDate.getTime());
-  //
-  // // const hrs = Math.floor((gap %= 86400) / 3600)
-  // //   .toString();
-  // // const min = Math.floor((gap %= 3600) / 60)
-  // //   .toString();
-  // // const sec = Math.floor(gap %= 60)
-  // //   .toString();
-  // // const milSec = (gap % 1000).toString();
-  //
-  // const date = new Date(gap);
-  // const hrs = date.getHours()
-  //   .toString();
-  // const min = date.getMinutes()
-  //   .toString();
-  // const sec = date.getSeconds()
-  //   .toString();
-  // const milSec = date.getMilliseconds()
-  //   .toString();
-  //
-  // // console.log(date);
-  //
-  // return `${hrs.padStart(2, 0)}:
-  // ${min.padStart(2, 0)}:${sec.padStart(2, 0)}.${milSec.padStart(3, 0)}`;
+function timeSpanToString(startDate, endDate) {
+  let gap = (endDate.getTime() - startDate.getTime()) / 1000;
+
+  const hrs = Math.floor((gap %= 86400) / 3600)
+    .toString();
+  const min = Math.floor((gap %= 3600) / 60)
+    .toString();
+  const sec = (gap % 60)
+    .toFixed(3)
+    .toString();
+
+  return `${hrs.padStart(2, '0')}:${min.padStart(2, '0')}:${sec.padStart(6, '0')}`;
 }
 
 
@@ -120,8 +106,14 @@ function timeSpanToString(/* startDate, endDate */) {
  *    Date.UTC(2016,3,5,18, 0) => Math.PI
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
-function angleBetweenClockHands(/* date */) {
-  throw new Error('Not implemented');
+function angleBetweenClockHands(date) {
+  const hours = date.getUTCHours() % 12;
+  const minutes = date.getUTCMinutes();
+
+  let angle = Math.abs((60 * hours) - (11 * minutes)) * 0.5;
+  if (angle > 180) angle = 360 - angle;
+
+  return (angle * Math.PI) / 180;
 }
 
 
