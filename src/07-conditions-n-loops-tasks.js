@@ -27,8 +27,12 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  if (num % 3 === 0 && num % 5 === 0) return 'FizzBuzz';
+  if (num % 3 === 0) return 'Fizz';
+  if (num % 5 === 0) return 'Buzz';
+
+  return num;
 }
 
 
@@ -43,8 +47,10 @@ function getFizzBuzz(/* num */) {
  *   5  => 120
  *   10 => 3628800
  */
-function getFactorial(/* n */) {
-  throw new Error('Not implemented');
+function getFactorial(n) {
+  if (n === 1) return n;
+  const num = n * getFactorial(n - 1);
+  return num;
 }
 
 
@@ -60,8 +66,16 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  let increase = n1;
+  let avalanche = n1;
+
+  for (let i = 0; i < n2 - n1; i += 1) {
+    increase += 1;
+    avalanche += increase;
+  }
+
+  return avalanche;
 }
 
 
@@ -80,8 +94,8 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  return a + b > c && a + c > b && c + b > a;
 }
 
 
@@ -117,8 +131,14 @@ function isTriangle(/* a, b, c */) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const right1 = rect1.left + rect1.width;
+  const right2 = rect2.left + rect2.width;
+
+  const bot1 = rect1.top + rect1.height;
+  const bot2 = rect2.top + rect2.height;
+
+  return right1 > rect2.left && right2 > rect1.left && bot1 > rect2.top && bot2 > rect1.top;
 }
 
 
@@ -135,7 +155,7 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *
  * Point is object of
  *  {
- *     x: 5,
+ *     x: 5,s
  *     y: 5
  *  }
  *
@@ -148,8 +168,10 @@ function doRectanglesOverlap(/* rect1, rect2 */) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const distance = Math.sqrt((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2);
+
+  return distance < circle.radius;
 }
 
 
@@ -164,8 +186,18 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const table = {};
+
+  for (let i = 0; i < str.length; i += 1) {
+    const char = table[str[i]];
+    table[str[i]] = char ? char + 1 : 1;
+  }
+
+  const res = Object.entries(table)
+    .find(([char, count]) => (count === 1 ? char : null));
+
+  return res ? res[0] : null;
 }
 
 
