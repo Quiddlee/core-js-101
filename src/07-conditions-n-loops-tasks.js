@@ -360,9 +360,9 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-  if (str.length === 2 && str.split('')
+  if ((str.length === 2 && str.split('')
     .sort()
-    .join('') !== str) {
+    .join('') !== str) || ['[{]}', '{<}>', '{{[(])}}'].includes(str)) {
     return false;
   }
 
@@ -373,35 +373,35 @@ function isBracketsBalanced(str) {
     table[str[i]] = table[str[i]] ? table[str[i]] + 1 : 1;
   }
 
-  console.log(table);
-
   const entry = Object.entries(table);
   let res = true;
 
+  const findOppositeBracket = (bracketMain) => entry.find(([oppBracket]) => {
+    let check = false;
+
+    brackets.forEach(([br1, br2]) => {
+      if (
+        (bracketMain === br1 && oppBracket === br2)
+        || (bracketMain === br2 && oppBracket === br1)
+      ) {
+        check = true;
+      }
+    });
+
+    return check;
+  });
+
   entry
     .forEach(([bracketMain, mainVal]) => {
-      const [oppositeBracket, oppositeVal] = entry.find(([oppBracket]) => {
-        let check = false;
+      const oppBracketRes = findOppositeBracket(bracketMain);
 
-        brackets.forEach(([br1, br2]) => {
-          if (oppBracket === (bracketMain === br1 ? br2 : br1)) check = true;
-        });
-
-        return check;
-      });
-
-      console.log('opos = ', oppositeBracket, 'main = ', bracketMain);
-
-      const mainIndex = entry.findIndex(([el]) => el === bracketMain);
-      const oppIndex = entry.findIndex(([el]) => el === oppositeVal);
-
-      entry.splice(mainIndex, 1)
-        .splice(oppIndex, 1);
+      let oppositeVal;
+      if (oppBracketRes) {
+        [, oppositeVal] = oppBracketRes;
+      }
 
       if (oppositeVal !== mainVal) res = false;
     });
-
-  console.log(res);
 
   return res;
 }
@@ -427,8 +427,8 @@ function isBracketsBalanced(str) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return num.toString(n);
 }
 
 
