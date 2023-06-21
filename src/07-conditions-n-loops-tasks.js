@@ -444,8 +444,32 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  const table = {};
+  const res = [];
+
+  pathes.forEach((path) => {
+    path.split('/')
+      .forEach((elem) => {
+        table[elem] = table[elem] ? table[elem] + 1 : 1;
+      });
+  });
+
+  Object.entries(table)
+    .forEach(([subPath, count]) => {
+      if (count === pathes.length) res.push(subPath);
+    });
+
+  if (
+    res.length === 0
+    && pathes.every((path) => path.indexOf('/') === 0)
+  ) {
+    return '/';
+  }
+
+  if (res.length === 0) return '';
+
+  return `${res.join('/')}/`;
 }
 
 
@@ -467,8 +491,18 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  const first = m1.flat();
+  const second = m2.flat();
+  const res = [];
+
+  if (m1.length !== 1) return m2;
+
+  for (let i = 0; i < first.length; i += 1) {
+    res.push(first[i] ? first[i] * second[i] : second[i]);
+  }
+
+  return [[res.reduce((acc, curr) => acc + curr)]];
 }
 
 
@@ -502,8 +536,99 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const horizontalCheck = () => {
+    let currArr;
+
+    const testRes = position.some((subArr) => {
+      currArr = subArr;
+
+      return subArr.every(
+        (value, i) => {
+          if (i === 2) return true;
+          return value === subArr[i + 1] && value !== undefined;
+        },
+      );
+    });
+
+    return {
+      testRes,
+      winner: currArr[0],
+    };
+  };
+
+  const verticalCheck = () => {
+    let checkArr = [];
+    let switcher = 0;
+
+    const testRes = position.some(() => {
+      checkArr = [];
+
+      position.forEach((sub) => checkArr.push(sub[switcher]));
+      switcher += 1;
+
+      return checkArr.every((value) => value === checkArr[0]);
+    });
+
+    return {
+      testRes,
+      winner: checkArr[0],
+    };
+  };
+
+  const diagonalLeftRightCheck = () => {
+    let checkArr = [];
+    let switcher = 0;
+
+    const testRes = position.some(() => {
+      checkArr = [];
+
+      position.forEach((sub) => {
+        checkArr.push(sub[switcher]);
+        switcher += 1;
+      });
+
+      return checkArr.every((value) => value === checkArr[0]);
+    });
+
+    return {
+      testRes,
+      winner: checkArr[0],
+    };
+  };
+
+  const diagonalRightLeftCheck = () => {
+    let checkArr = [];
+    let switcher = 2;
+
+    const testRes = position.some(() => {
+      checkArr = [];
+
+      position.forEach((sub) => {
+        checkArr.push(sub[switcher]);
+        switcher -= 1;
+      });
+
+      return checkArr.every((value) => value === checkArr[0]);
+    });
+
+    return {
+      testRes,
+      winner: checkArr[0],
+    };
+  };
+
+  const horiz = horizontalCheck();
+  const vert = verticalCheck();
+  const diagLeftRight = diagonalLeftRightCheck();
+  const diagRightLeft = diagonalRightLeftCheck();
+
+  if (horiz.testRes && horiz.winner) return horiz.winner;
+  if (vert.testRes && vert.winner) return vert.winner;
+  if (diagLeftRight.testRes && diagLeftRight.winner) return diagLeftRight.winner;
+  if (diagRightLeft.testRes && diagRightLeft.winner) return diagRightLeft.winner;
+
+  return undefined;
 }
 
 
